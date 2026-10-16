@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Media picker integration example</title>
+<!-- Copy these includes into an authenticated page and adjust paths. -->
+<link rel="stylesheet" href="/assets/media-browser.css">
+</head>
+<body>
+<form><input name="image_id" id="image-id" type="hidden"><button id="choose" type="button">Choose an image</button><output id="filename"></output></form>
+<script src="/assets/media-browser.js"></script>
+<script>
+// Example source: the live demo uses external JS to comply with its strict CSP.
+const browser = new MediaBrowser({endpoint: '/api.php'});
+document.querySelector('#choose').onclick = async () => {
+  const session = await browser.session();
+  if (!session.authorized) { alert('Sign in to the media application first.'); return; }
+  browser.open({type: 'image', onSelect: files => {
+    document.querySelector('#image-id').value = files[0].id;
+    document.querySelector('#filename').textContent = files[0].name;
+  }});
+};
+</script>
+</body></html>

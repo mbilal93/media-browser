@@ -1,0 +1,7 @@
+/storage/*
+!/storage/.gitkeep
+__pycache__/
+*.pyc
+/vendor/
+/checks/frameworks/vendor/
+/docs

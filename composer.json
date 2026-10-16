@@ -1,0 +1,15 @@
+{
+  "name": "mbilal93/media-browser",
+  "description": "Framework-independent PHP media browser with Laravel, CodeIgniter 4 and core PHP adapters",
+  "type": "library",
+  "license": "proprietary",
+  "require": {"php": "^8.1", "ext-pdo": "*", "ext-fileinfo": "*"},
+  "suggest": {"ext-pdo_sqlite": "Required for SQLite metadata storage", "ext-pdo_mysql": "Required for MySQL metadata storage"},
+  "autoload": {"psr-4": {"MediaBrowser\\": "src/"}, "files": ["src/functions.php"]},
+  "extra": {"laravel": {"providers": ["MediaBrowser\\Bridge\\Laravel\\MediaBrowserServiceProvider"]}},
+  "scripts": {
+    "test": ["@php checks/database.php", "@php checks/seed.php", "@php checks/store.php", "@php checks/kernel.php", "@php checks/field.php", "node checks/client.cjs", "node checks/gallery.cjs", "python checks/api_http.py"],
+    "test:frameworks": ["@php checks/frameworks/laravel.php", "@php checks/frameworks/codeigniter.php"],
+    "test:mysql": "python checks/mysql_runtime.py"
+  }
+}

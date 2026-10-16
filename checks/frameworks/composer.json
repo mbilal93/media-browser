@@ -1,0 +1,8 @@
+{
+  "name": "signum/media-browser-framework-checks",
+  "description": "Isolated framework runtimes for media browser integration checks",
+  "type": "project",
+  "license": "proprietary",
+  "require": {"laravel/framework": "^12.0", "codeigniter4/framework": "^4.7"},
+  "config": {"allow-plugins": false}
+}
